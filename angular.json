@@ -109,7 +109,6 @@
       }
     }
   },
-  "defaultProject": "entrega9pf",
   "cli": {
     "schematicCollections": [
       "@ngrx/schematics",
@@ -119,6 +118,7 @@
       "@ngrx/schematics",
       "@ngrx/schematics",
       "@ngrx/schematics"
-    ]
+    ],
+    "analytics": "d0483c87-5bf0-4006-82ba-cf5069468188"
   }
 }

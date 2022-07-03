@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuarios.component';
-import { FormUsuariosComponent } from './components/form-usuarios/form-usuarios.component';
-import { EditUsuariosComponent } from './components/edit-usuarios/edit-usuarios.component';
-import { InfoUsuariosComponent } from './components/info-usuarios/info-usuarios.component';
+import { UsuariosEditComponent } from './components/usuarios-edit/usuarios-edit.component';
+import { UsuariosFormComponent } from './components/usuarios-form/usuarios-form.component';
+import { UsuariosInfoComponent } from './components/usuarios-info/usuarios-info.component';
+import { UsuariosListaComponent } from './components/usuarios-lista/usuarios-lista.component';
 
 
 
 @NgModule({
   declarations: [
-    ListaUsuariosComponent,
-    FormUsuariosComponent,
-    EditUsuariosComponent,
-    InfoUsuariosComponent
+    UsuariosEditComponent,
+    UsuariosFormComponent,
+    UsuariosInfoComponent,
+    UsuariosListaComponent
   ],
   imports: [
     CommonModule

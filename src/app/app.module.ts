@@ -5,20 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
-import { FrontComponent } from './core/front/front.component';
-import { NavbarComponent } from './core/navbar/navbar.component';
-import { SidebarComponent } from './core/sidebar/sidebar.component';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { MaterialModule } from './shared/material.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    FrontComponent,
-    NavbarComponent,
-    SidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CoreModule,
+    SharedModule,
+    MaterialModule,
     NoopAnimationsModule,
     StoreModule.forRoot({}, {})
   ],

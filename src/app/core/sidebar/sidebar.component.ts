@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  
 
-  ngOnInit(): void {
+  
+  constructor(private router:Router) { }
+
+  ngOnInit(): void { }
+
+  nuevoE(){
+    this.router.navigate(['/form/form']);
   }
+
+  showList(){
+    this.router.navigate(['/lista/alumnos'])
+  }
+
 
 }

@@ -4,6 +4,8 @@ import { InscripcionesEditComponent } from './components/inscripciones-edit/insc
 import { InscripcionesFormComponent } from './components/inscripciones-form/inscripciones-form.component';
 import { InscripcionesInfoComponent } from './components/inscripciones-info/inscripciones-info.component';
 import { InscripcionesListaComponent } from './components/inscripciones-lista/inscripciones-lista.component';
+import { RouterModule } from '@angular/router';
+import { InscripcionesRoutingModule } from './inscripciones-routing.module';
 
 
 
@@ -15,7 +17,9 @@ import { InscripcionesListaComponent } from './components/inscripciones-lista/in
     InscripcionesListaComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    InscripcionesRoutingModule
   ]
 })
 export class InscripcionesModule { }

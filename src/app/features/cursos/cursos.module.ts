@@ -4,6 +4,8 @@ import { CursosEditComponent } from './components/cursos-edit/cursos-edit.compon
 import { CursosFormComponent } from './components/cursos-form/cursos-form.component';
 import { CursosInfoComponent } from './components/cursos-info/cursos-info.component';
 import { CursosListaComponent } from './components/cursos-lista/cursos-lista.component';
+import { RouterModule } from '@angular/router';
+import { CursosRoutingModule } from './cursos-routing.module';
 
 
 
@@ -15,7 +17,9 @@ import { CursosListaComponent } from './components/cursos-lista/cursos-lista.com
     CursosListaComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    CursosRoutingModule
   ]
 })
 export class CursosModule { }

@@ -8,6 +8,8 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './shared/material.module';
+import { EffectsModule } from '@ngrx/effects';
+import { FeaturesModule } from './features/features.module';
 
 
 @NgModule({
@@ -19,9 +21,11 @@ import { MaterialModule } from './shared/material.module';
     AppRoutingModule,
     CoreModule,
     SharedModule,
+    FeaturesModule,
     MaterialModule,
     NoopAnimationsModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

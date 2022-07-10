@@ -6,5 +6,6 @@ export interface Alumnos {
     telefono:string;
     direccion:string;
     avatar:string;
-    curso:string
+    curso:string;
+    dni:string
 }

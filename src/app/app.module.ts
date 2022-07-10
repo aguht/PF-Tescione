@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './shared/material.module';
 import { EffectsModule } from '@ngrx/effects';
 import { FeaturesModule } from './features/features.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,9 +20,10 @@ import { FeaturesModule } from './features/features.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     CoreModule,
     SharedModule,
-    FeaturesModule,
+    //FeaturesModule,
     MaterialModule,
     NoopAnimationsModule,
     StoreModule.forRoot({}, {}),

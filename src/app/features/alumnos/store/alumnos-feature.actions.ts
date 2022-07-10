@@ -15,7 +15,7 @@ export const loadAlumnosFeaturesFailure = createAction(
   props<{ error: any }>()
 );
 
-export const postAlumnosFeatures=createAction(
+/*export const postAlumnosFeatures=createAction(
   '[AlumnosFeature] post Alumnos',
   props<{alumnos:Alumnos}>()
 );
@@ -33,4 +33,4 @@ export const loadElementByIdFeatures=createAction(
 export const loadElementByIdFeaturesSucces=createAction(
   '[AlumnosFeature] load element by id success',
   props<{alumnosDetailed:Alumnos}>()
-);
+);*/

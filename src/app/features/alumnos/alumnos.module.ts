@@ -11,6 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AlumnosFeatureEffects } from './store/alumnos-feature.effects';
 import * as fromAlumnosFeature from './store/alumnos-feature.reducer';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,9 +24,10 @@ import * as fromAlumnosFeature from './store/alumnos-feature.reducer';
   imports: [
     CommonModule,
     RouterModule,
+    HttpClientModule,
     AlumnosRoutingModule,
     SharedModule,
-    StoreModule.forFeature(fromAlumnosFeature.alumnosFeatureFeatureKey,fromAlumnosFeature.alumnosreducer),
+    StoreModule.forFeature(fromAlumnosFeature.alumnosFeatureFeatureKey,fromAlumnosFeature.reducer),
     EffectsModule.forFeature([AlumnosFeatureEffects])
   ]
 })

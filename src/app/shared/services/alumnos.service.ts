@@ -7,10 +7,8 @@ import { Alumnos } from '../interfaces/alumnos';
   providedIn: 'root'
 })
 export class AlumnosService {
-
-  url='https://62c7460574e1381c0a74d0a5.mockapi.io/alumnos'
-
-  constructor(private http:HttpClient) {}
+  url= 'https://62c7460574e1381c0a74d0a5.mockapi.io/alumnos';
+  constructor(private http: HttpClient) { }
 
   getAlumnosList():Observable<Alumnos[]>{
     return this.http.get<Alumnos[]>(this.url);

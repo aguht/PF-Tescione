@@ -16,20 +16,18 @@ export const initialState: State = {
   alumnosDetailed: {}
 };
 
-export const alumnosreducer = createReducer(
+export const reducer = createReducer(
   initialState,
 
-  on(AlumnosFeatureActions.loadAlumnosFeatures, state => {
+  on(AlumnosFeatureActions.loadAlumnosFeatures, (state) => {
     return {...state}
   }),
-
   on(AlumnosFeatureActions.loadAlumnosFeaturesSuccess, (state, {alumnos}) => {
-    return {...state}
+    return {...state, alumnos, loading:false}
   }),
-
   on(AlumnosFeatureActions.loadAlumnosFeaturesFailure, (state, action) => state),
 
-  on(AlumnosFeatureActions.loadElementByIdFeaturesSucces, (state,{alumnosDetailed})=>{
+  /*on(AlumnosFeatureActions.loadElementByIdFeaturesSucces, (state,{alumnosDetailed})=>{
     return {...state,alumnosDetailed}
-  })
+  })*/
 );

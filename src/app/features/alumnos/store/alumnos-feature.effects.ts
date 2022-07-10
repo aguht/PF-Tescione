@@ -13,13 +13,14 @@ export class AlumnosFeatureEffects {
     return this.actions$.pipe(
       ofType(AlumnosFeatureActions.loadAlumnosFeatures),
       mergeMap(()=>this.alumnosService.getAlumnosList()
-      .pipe(map(alumnos=>AlumnosFeatureActions.loadAlumnosFeaturesSuccess({alumnos})),
-      catchError(()=>EMPTY)
+      .pipe(
+        map(alumnos=>AlumnosFeatureActions.loadAlumnosFeaturesSuccess({alumnos})),
+        catchError(()=>EMPTY)
       ))
     );
   });
 
-  postAlumnosFeatures$=createEffect(()=>{
+  /*postAlumnosFeatures$=createEffect(()=>{
     return this.actions$.pipe(
       ofType(AlumnosFeatureActions.postAlumnosFeatures),
       mergeMap((alumnos)=>this.alumnosService.postAlumnos(alumnos.alumnos)
@@ -50,7 +51,7 @@ export class AlumnosFeatureEffects {
         catchError(()=>EMPTY)
      ))
     );
-  });
+  });*/
 
   constructor(private actions$: Actions, private alumnosService:AlumnosService) {}
 }

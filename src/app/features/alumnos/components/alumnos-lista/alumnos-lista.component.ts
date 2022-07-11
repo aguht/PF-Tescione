@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { disableDebugTools } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { AlumnosService } from 'src/app/shared/services/alumnos.service';
-import { loadAlumnosFeatures } from '../../store/alumnos-feature.actions';
-import { selectAlumnosSuccess } from '../../store/alumnos-feature.selectors';
+import { deleteAlumnosFeatures, loadAlumnosFeatures, loadElementByIdFeatures } from '../../store/alumnos-feature.actions';
+import { selectAlumnosSuccess, selectElementByIdSuccess } from '../../store/alumnos-feature.selectors';
 
 @Component({
   selector: 'app-alumnos-lista',
@@ -15,6 +16,7 @@ export class AlumnosListaComponent implements OnInit {
   nombreApellido:string;
   displayedColumns=['alumno','mail','telefono','dni','edit','info','delete'];
   alumnoss:any=[];
+  subscriptions:Subscription;
 
   constructor(private alumnosService:AlumnosService, private store:Store<any>) { }
 
@@ -27,10 +29,23 @@ export class AlumnosListaComponent implements OnInit {
         }
       }
    )
-   
-   
-   
-   
+   this.store.select(selectElementByIdSuccess).subscribe(
+    val=>{console.log(val)}
+    )  
   }
 
+
+  deleteElement(el:any){
+    this.store.dispatch(deleteAlumnosFeatures({id:el.id}))
+  }
+
+  getAlumnoDetails(el:any){
+    this.store.dispatch(loadElementByIdFeatures({id:el.id}))
+  }
+
+  ngOnDestroy(): void {
+    if(this.subscriptions){
+      this.subscriptions.unsubscribe();
+    }
+  }
 }

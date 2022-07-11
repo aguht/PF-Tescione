@@ -20,7 +20,7 @@ export class AlumnosFeatureEffects {
     );
   });
 
-  /*postAlumnosFeatures$=createEffect(()=>{
+  postAlumnosFeatures$=createEffect(()=>{
     return this.actions$.pipe(
       ofType(AlumnosFeatureActions.postAlumnosFeatures),
       mergeMap((alumnos)=>this.alumnosService.postAlumnos(alumnos.alumnos)
@@ -42,7 +42,7 @@ export class AlumnosFeatureEffects {
     );
   });
 
-  loadProductDetailedFeatures$=createEffect(()=>{
+  loadAlumnosDetailedFeatures$=createEffect(()=>{
     return this.actions$.pipe(
       ofType(AlumnosFeatureActions.loadElementByIdFeatures),
       mergeMap((alumnos)=>this.alumnosService.getAlumnosDetail(alumnos.id)
@@ -51,7 +51,7 @@ export class AlumnosFeatureEffects {
         catchError(()=>EMPTY)
      ))
     );
-  });*/
+  });
 
   constructor(private actions$: Actions, private alumnosService:AlumnosService) {}
 }

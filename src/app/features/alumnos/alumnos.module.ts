@@ -12,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AlumnosFeatureEffects } from './store/alumnos-feature.effects';
 import * as fromAlumnosFeature from './store/alumnos-feature.reducer';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,6 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AlumnosRoutingModule,
     SharedModule,

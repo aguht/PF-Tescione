@@ -1,1 +1,49 @@
-<p>alumnos-form works!</p>
+<div class="form">
+<form [formGroup]="alumnoForm" (ngSubmit)="submit()">
+
+    <div>
+      <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input formControlName="nombreAlumno" matInput>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Apellido</mat-label>
+        <input formControlName="apellidoAlumno" matInput>
+      </mat-form-field>
+    </div>
+    <div>
+    <mat-form-field appearance="fill">
+         <mat-label>E-mail</mat-label>
+         <input formControlName="emailAlumno" matInput>
+       </mat-form-field>
+    </div>
+    <div>
+    <mat-form-field appearance="fill">
+        <mat-label>Telefono</mat-label>
+        <input formControlName="telefonoAlumno" matInput>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Direccion</mat-label>
+        <input formControlName="direccionAlumno" matInput>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>DNI</mat-label>
+        <input formControlName="dniAlumno" matInput>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Avatar</mat-label>
+        <input formControlName="avatarAlumno" matInput>
+      </mat-form-field>
+    </div>          
+
+    <button type="submit">Submit</button>
+</form>
+</div>

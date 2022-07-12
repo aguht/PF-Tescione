@@ -19,18 +19,19 @@ export class AlumnosFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.alumnoForm=this.fb.group({
-      nombreAlumno:[''],
-      apellidoAlumno:[''],
-      emailAlumno:[''],
-      telefonoAlumno:[''],
-      direccionAlumno:[''],
-      dniAlumno:[''],
-      avatarAlumno:['']
+      nombre:[''],
+      apellido:[''],
+      email:[''],
+      telefono:[''],
+      direccion:[''],
+      dni:[''],
+      avatar:[''],
+      id:['']
     })
 
-    this.store.select(selectElementByIdSuccess).subscribe(
+    /*this.store.select(selectElementByIdSuccess).subscribe(
       val=>{this.alumnoToEdit=val}
-    )
+    )*/
 
     if(this.alumnoToEdit){
       this.alumnoForm.get('nombreAlumno')?.patchValue(this.alumnoToEdit.nombreAlumno);
@@ -44,11 +45,23 @@ export class AlumnosFormComponent implements OnInit {
   }
 
   submit(){
-    let alumnos=[];
-    //this.store.dispatch(loadAlumnosFeatures());
+    let alumnos:any=[];
+    debugger;
     this.store.select(selectAlumnosSuccess).subscribe(
-      (val)=>{alumnos=val}
+      (val)=>{
+        alumnos=this.alumnoForm.value;
+        let index=1;
+        debugger;
+        if(val.alumnos.length>0 && !this.alumnoToEdit){
+          index=val.alumnos.length+1;
+          this.alumnoForm.value['id']=index;
+          val.alumnos.push(this.alumnoForm.value);
+        }else if(val.alumnos.length===0 && !this.alumnoToEdit){
+          this.alumnoForm.value['id']=index;
+          alumnos.push(this.alumnoForm.value)}
+        }
     )
+   /* alumnos=this.alumnoForm.value;
     let index=1;
     if(alumnos.length>0 && !this.alumnoToEdit){
       index=alumnos.length+1;
@@ -57,10 +70,10 @@ export class AlumnosFormComponent implements OnInit {
     }else if(alumnos.length===0 && !this.alumnoToEdit){
       this.alumnoForm.value['id']=index;
       alumnos.push(this.alumnoForm.value)
-    }
+    }*/
     
     if(this.alumnoToEdit){
-    let indice=alumnos.findIndex((x)=>x.id===this.alumnoToEdit.id);
+    let indice=alumnos.findIndex((x:any)=>x.id===this.alumnoToEdit.id);
     alumnos[indice]=this.alumnoForm.value;
     }
 

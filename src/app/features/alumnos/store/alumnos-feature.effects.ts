@@ -19,7 +19,7 @@ export class AlumnosFeatureEffects {
       ))
     );
   });
-
+  
   postAlumnosFeatures$=createEffect(()=>{
     return this.actions$.pipe(
       ofType(AlumnosFeatureActions.postAlumnosFeatures),

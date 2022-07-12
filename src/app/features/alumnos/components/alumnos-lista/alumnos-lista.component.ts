@@ -29,9 +29,9 @@ export class AlumnosListaComponent implements OnInit {
         }
       }
    )
-   this.store.select(selectElementByIdSuccess).subscribe(
+   /*this.store.select(selectElementByIdSuccess).subscribe(
     val=>{console.log(val)}
-    )  
+    )  */
   }
 
 

@@ -13,7 +13,7 @@ import { selectAlumnosSuccess, selectElementByIdSuccess } from '../../store/alum
 export class AlumnosFormComponent implements OnInit {
 
   alumnoForm:FormGroup;
-  alumnoToEdit:any;
+  alumnoToEdit:any=[];
 
   constructor(private fb: FormBuilder, private store: Store, private router:Router) { }
 
@@ -25,42 +25,35 @@ export class AlumnosFormComponent implements OnInit {
       telefono:[''],
       direccion:[''],
       dni:[''],
-      avatar:[''],
-      id:['']
+      avatar:['']      
     })
 
-    /*this.store.select(selectElementByIdSuccess).subscribe(
-      val=>{this.alumnoToEdit=val}
-    )*/
+    /* this.store.select(selectElementByIdSuccess).subscribe(
+      val=>{debugger;
+        this.alumnoToEdit=val */
+    
+  
 
     if(this.alumnoToEdit){
-      this.alumnoForm.get('nombreAlumno')?.patchValue(this.alumnoToEdit.nombreAlumno);
-      this.alumnoForm.get('apellidoAlumno')?.patchValue(this.alumnoToEdit.apellidoAlumno);
-      this.alumnoForm.get('emailalumno')?.patchValue(this.alumnoToEdit.emailAlumno);
-      this.alumnoForm.get('telefonoAlumno')?.patchValue(this.alumnoToEdit.telefonoAlumno);
-      this.alumnoForm.get('direccionAlumno')?.patchValue(this.alumnoToEdit.direccionAlumno);
-      this.alumnoForm.get('dniAlumno')?.patchValue(this.alumnoToEdit.dniAlumno);
-      this.alumnoForm.get('avatarAlumno')?.patchValue(this.alumnoToEdit.avatarAlumno);
+      this.alumnoForm.get('nombre')?.patchValue(this.alumnoToEdit.nombre);
+      this.alumnoForm.get('apellido')?.patchValue(this.alumnoToEdit.apellido);
+      this.alumnoForm.get('email')?.patchValue(this.alumnoToEdit.email);
+      this.alumnoForm.get('telefono')?.patchValue(this.alumnoToEdit.telefono);
+      this.alumnoForm.get('direccion')?.patchValue(this.alumnoToEdit.direccion);
+      this.alumnoForm.get('dni')?.patchValue(this.alumnoToEdit.dni);
+      this.alumnoForm.get('avatar')?.patchValue(this.alumnoToEdit.avatar);
     }
+   // })
   }
 
+  
   submit(){
     let alumnos:any=[];
-    debugger;
-    this.store.select(selectAlumnosSuccess).subscribe(
-      (val)=>{
-        alumnos=this.alumnoForm.value;
-        let index=1;
-        debugger;
-        if(val.alumnos.length>0 && !this.alumnoToEdit){
-          index=val.alumnos.length+1;
-          this.alumnoForm.value['id']=index;
-          val.alumnos.push(this.alumnoForm.value);
-        }else if(val.alumnos.length===0 && !this.alumnoToEdit){
-          this.alumnoForm.value['id']=index;
-          alumnos.push(this.alumnoForm.value)}
-        }
-    )
+    
+    
+    alumnos=this.alumnoForm.value;
+        
+    
    /* alumnos=this.alumnoForm.value;
     let index=1;
     if(alumnos.length>0 && !this.alumnoToEdit){
@@ -72,10 +65,7 @@ export class AlumnosFormComponent implements OnInit {
       alumnos.push(this.alumnoForm.value)
     }*/
     
-    if(this.alumnoToEdit){
-    let indice=alumnos.findIndex((x:any)=>x.id===this.alumnoToEdit.id);
-    alumnos[indice]=this.alumnoForm.value;
-    }
+    
 
     this.store.dispatch(postAlumnosFeatures({alumnos:alumnos}));
     this.router.navigate(['/alumnos']);

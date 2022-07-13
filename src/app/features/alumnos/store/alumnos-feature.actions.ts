@@ -20,6 +20,11 @@ export const postAlumnosFeatures=createAction(
   props<{alumnos:Alumnos}>()
 );
 
+export const updateAlumnosFeatures=createAction(
+  '[AlumnosFeature] update Alumnos',
+  props<{}
+)
+
 export const deleteAlumnosFeatures=createAction(
   '[AlumnosFeature] delete Alumnos',
   props<{id:string}>()

@@ -43,6 +43,10 @@ export class AlumnosListaComponent implements OnInit {
     this.store.dispatch(loadElementByIdFeatures({id:el.id}))
   }
 
+  getAlumnoDetails2(el:any){
+    this.store.dispatch(loadElementByIdFeatures({id:el.id}))
+  }
+
   ngOnDestroy(): void {
     if(this.subscriptions){
       this.subscriptions.unsubscribe();

@@ -21,7 +21,8 @@ export class AlumnosInfoComponent implements OnInit {
   ngOnInit(): void {
     
     this.store.select(selectElementByIdSuccess).subscribe(
-      val=>{this.alumno=val}
+      val=>{debugger;
+        this.alumno=val}
     )
   }
 

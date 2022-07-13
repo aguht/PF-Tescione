@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { selectElementByIdSuccess } from '../../store/cursos-feature.selectors';
 
 @Component({
   selector: 'app-cursos-info',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CursosInfoComponent implements OnInit {
 
-  constructor() { }
+  curso:any=[];
+  subscriptions:Subscription;
+  
+  constructor(private store:Store) { }
 
   ngOnInit(): void {
+    
+    this.store.select(selectElementByIdSuccess).subscribe(
+      val=>{this.curso=val}
+    )
   }
 
+  ngOnDestroy(): void {
+    if(this.subscriptions){
+      this.subscriptions.unsubscribe();
+    }
+  }
 }

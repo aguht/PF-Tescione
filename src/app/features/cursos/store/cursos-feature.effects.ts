@@ -1,26 +1,69 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, concatMap } from 'rxjs/operators';
+import { catchError, map, concatMap, mergeMap } from 'rxjs/operators';
 import { Observable, EMPTY, of } from 'rxjs';
 import * as CursosFeatureActions from './cursos-feature.actions';
+import { CursosService } from 'src/app/shared/services/cursos.service';
 
 
 @Injectable()
 export class CursosFeatureEffects {
 
-  loadCursosFeatures$ = createEffect(() => {
-    return this.actions$.pipe( 
-
+  loadcursosFeatures$=createEffect(() => {
+    return this.actions$.pipe(
       ofType(CursosFeatureActions.loadCursosFeatures),
-      concatMap(() =>
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
-        EMPTY.pipe(
-          map(data => CursosFeatureActions.loadCursosFeaturesSuccess({ data })),
-          catchError(error => of(CursosFeatureActions.loadCursosFeaturesFailure({ error }))))
-      )
+      mergeMap(()=>this.cursosService.getCursosList()
+      .pipe(
+        map(cursos=>CursosFeatureActions.loadCursosFeaturesSuccess({cursos})),
+        catchError(()=>EMPTY)
+      ))
+    );
+  });
+  
+  postCursosFeatures$=createEffect(()=>{
+    return this.actions$.pipe(
+      ofType(CursosFeatureActions.postCursosFeatures),
+      mergeMap((cursos)=>this.cursosService.postCursos(cursos.cursos)
+      .pipe(
+        map(()=>CursosFeatureActions.loadCursosFeatures()),
+        catchError(()=>EMPTY)
+      ))
+    );
+  });
+
+  deleteCursosFeatures$=createEffect(()=>{
+    return this.actions$.pipe(
+      ofType(CursosFeatureActions.deleteCursosFeatures),
+      mergeMap((cursos)=>this.cursosService.deleteCursos(cursos.id)
+      .pipe(
+        map(()=>CursosFeatureActions.loadCursosFeatures()),
+        catchError(()=>EMPTY)
+     ))
+    );
+  });
+
+  loadCursosDetailedFeatures$=createEffect(()=>{
+    return this.actions$.pipe(
+      ofType(CursosFeatureActions.loadElementByIdFeatures),
+      mergeMap((cursos)=>this.cursosService.getCursosDetail(cursos.id)
+      .pipe(
+        map((cursosDetailed)=>CursosFeatureActions.loadElementByIdFeaturesSucces({cursosDetailed})),
+        catchError(()=>EMPTY)
+     ))
+    );
+  });
+
+  updateCursosFeatures$=createEffect(()=>{
+    return this.actions$.pipe(
+      ofType(CursosFeatureActions.updateCursosFeatures),
+      mergeMap((cursos)=>this.cursosService.updateCursos(cursos.cursos)
+      .pipe(
+        map(()=>CursosFeatureActions.loadCursosFeatures()),
+        catchError(()=>EMPTY)
+     ))
     );
   });
 
 
-  constructor(private actions$: Actions) {}
+  constructor(private actions$: Actions, private cursosService:CursosService) {}
 }

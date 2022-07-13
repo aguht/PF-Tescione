@@ -20,11 +20,6 @@ export const postAlumnosFeatures=createAction(
   props<{alumnos:Alumnos}>()
 );
 
-export const updateAlumnosFeatures=createAction(
-  '[AlumnosFeature] update Alumnos',
-  props<{}
-)
-
 export const deleteAlumnosFeatures=createAction(
   '[AlumnosFeature] delete Alumnos',
   props<{id:string}>()
@@ -38,4 +33,9 @@ export const loadElementByIdFeatures=createAction(
 export const loadElementByIdFeaturesSucces=createAction(
   '[AlumnosFeature] load element by id success',
   props<{alumnosDetailed:Alumnos}>()
+);
+
+export const updateAlumnosFeatures=createAction(
+  '[AlumnosFeature] update Alumnos',
+  props<{alumnos:Alumnos}>()
 );

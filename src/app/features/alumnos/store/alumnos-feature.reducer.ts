@@ -8,7 +8,7 @@ export interface State {
   alumnos: Alumnos[];
   loading: boolean;
   alumnosDetailed: any;
-}
+};
 
 export const initialState: State = {
   alumnos: [],
@@ -29,5 +29,6 @@ export const reducer = createReducer(
 
   on(AlumnosFeatureActions.loadElementByIdFeaturesSucces, (state,{alumnosDetailed})=>{
     return {...state,alumnosDetailed}
-  })
+  }),
+
 );

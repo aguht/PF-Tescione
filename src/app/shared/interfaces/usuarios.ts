@@ -1,4 +1,7 @@
 export interface Usuarios {
-    userUsuario:string;
-    passUsuario:string
+    user:string;
+    pass:string;
+    nombre:string;
+    email:string;
+    id:string
 }

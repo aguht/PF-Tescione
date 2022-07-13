@@ -53,5 +53,16 @@ export class AlumnosFeatureEffects {
     );
   });
 
+  updateAlumnosFeatures$=createEffect(()=>{
+    return this.actions$.pipe(
+      ofType(AlumnosFeatureActions.updateAlumnosFeatures),
+      mergeMap((alumnos)=>this.alumnosService.updateAlumnos(alumnos.alumnos)
+      .pipe(
+        map(()=>AlumnosFeatureActions.loadAlumnosFeatures()),
+        catchError(()=>EMPTY)
+     ))
+    );
+  });
+
   constructor(private actions$: Actions, private alumnosService:AlumnosService) {}
 }

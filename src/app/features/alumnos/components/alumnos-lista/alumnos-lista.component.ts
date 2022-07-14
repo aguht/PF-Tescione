@@ -12,7 +12,7 @@ import { selectAlumnosSuccess } from '../../store/alumnos-feature.selectors';
 export class AlumnosListaComponent implements OnInit {
 
   nombreApellido:string;
-  displayedColumns=['alumno','mail','telefono','dni','edit','info','delete'];
+  displayedColumns=['alumno','mail','telefono','dni','inscripcion','edit','info','delete'];
   alumnoss:any=[];
   subscriptions:Subscription;
 

@@ -12,7 +12,7 @@ import { selectCursosSuccess } from '../../store/cursos-feature.selectors';
 export class CursosListaComponent implements OnInit {
 
   nombreApellido:string;
-  displayedColumns=['nombre','profesor','horas','edit','info','delete'];
+  displayedColumns=['nombre','profesor','horas','inscripcion','edit','info','delete'];
   cursoss:any=[];
   subscriptions:Subscription;
 

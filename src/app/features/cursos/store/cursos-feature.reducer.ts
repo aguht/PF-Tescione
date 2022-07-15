@@ -27,7 +27,7 @@ export const reducer = createReducer(
   }),
   on(CursosFeatureActions.loadCursosFeaturesFailure, (state, action) => state),
 
-  on(CursosFeatureActions.loadElementByIdFeaturesSucces, (state,{cursosDetailed})=>{
+  on(CursosFeatureActions.loadCursoByIdFeaturesSucces, (state,{cursosDetailed})=>{
     return {...state,cursosDetailed}
   }),
 

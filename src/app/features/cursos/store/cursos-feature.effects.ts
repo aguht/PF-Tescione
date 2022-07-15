@@ -44,10 +44,10 @@ export class CursosFeatureEffects {
 
   loadCursosDetailedFeatures$=createEffect(()=>{
     return this.actions$.pipe(
-      ofType(CursosFeatureActions.loadElementByIdFeatures),
+      ofType(CursosFeatureActions.loadCursoByIdFeatures),
       mergeMap((cursos)=>this.cursosService.getCursosDetail(cursos.id)
       .pipe(
-        map((cursosDetailed)=>CursosFeatureActions.loadElementByIdFeaturesSucces({cursosDetailed})),
+        map((cursosDetailed)=>CursosFeatureActions.loadCursoByIdFeaturesSucces({cursosDetailed})),
         catchError(()=>EMPTY)
      ))
     );

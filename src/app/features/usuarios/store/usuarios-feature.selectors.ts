@@ -21,7 +21,7 @@ export const selectUsuariosSuccess=createSelector(
   (usuarios,loading)=>({usuarios,loading})
 )
 
-export const selectElementByIdSuccess=createSelector(
+export const selectUsuarioByIdSuccess=createSelector(
   selectUsuariosFeatureState,
   (state)=>state.usuariosDetailed
 )

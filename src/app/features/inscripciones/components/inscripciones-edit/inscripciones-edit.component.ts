@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { updateInscripcionesFeatures } from '../../store/inscripciones-feature.actions';
-import { selectElementByIdSuccess } from '../../store/inscripciones-feature.selectors';
+import { selectInscripcionByIdSuccess } from '../../store/inscripciones-feature.selectors';
 
 @Component({
   selector: 'app-inscripciones-edit',
@@ -27,7 +27,7 @@ export class InscripcionesEditComponent implements OnInit {
       }
     )
 
-    this.store.select(selectElementByIdSuccess).subscribe(
+    this.store.select(selectInscripcionByIdSuccess).subscribe(
       val=>{
         this.inscripcionToEdit=val
         this.inscripcionForm.get('user')?.patchValue(this.inscripcionToEdit.user);

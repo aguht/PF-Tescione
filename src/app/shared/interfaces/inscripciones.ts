@@ -1,7 +1,7 @@
 export interface Inscripciones {
-    idAlumnos:string;
+    idAlumno:string;
     idCurso:string;
     idUser:string;
-    fecha:string;
+    fecha:number;
     id:string
 }

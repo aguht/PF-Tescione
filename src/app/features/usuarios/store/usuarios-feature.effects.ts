@@ -44,10 +44,10 @@ export class UsuariosFeatureEffects {
 
   loadUsuariosDetailedFeatures$=createEffect(()=>{
     return this.actions$.pipe(
-      ofType(UsuariosFeatureActions.loadElementByIdFeatures),
+      ofType(UsuariosFeatureActions.loadUsuarioByIdFeatures),
       mergeMap((usuarios)=>this.usuariosService.getUsuariosDetail(usuarios.id)
       .pipe(
-        map((usuariosDetailed)=>UsuariosFeatureActions.loadElementByIdFeaturesSucces({usuariosDetailed})),
+        map((usuariosDetailed)=>UsuariosFeatureActions.loadUsuarioByIdFeaturesSucces({usuariosDetailed})),
         catchError(()=>EMPTY)
      ))
     );

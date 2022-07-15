@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { deleteAlumnosFeatures, loadAlumnosFeatures, loadElementByIdFeatures } from '../../store/alumnos-feature.actions';
+import { deleteAlumnosFeatures, loadAlumnoByIdFeatures, loadAlumnosFeatures } from '../../store/alumnos-feature.actions';
 import { selectAlumnosSuccess } from '../../store/alumnos-feature.selectors';
 
 @Component({
@@ -34,7 +34,7 @@ export class AlumnosListaComponent implements OnInit {
   }
 
   getAlumnoDetails(el:any){
-    this.store.dispatch(loadElementByIdFeatures({id:el.id}))
+    this.store.dispatch(loadAlumnoByIdFeatures({id:el.id}))
   }
 
   ngOnDestroy(): void {

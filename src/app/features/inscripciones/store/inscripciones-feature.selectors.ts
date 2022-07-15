@@ -21,7 +21,7 @@ export const selectInscripcionesSuccess=createSelector(
   (inscripciones,loading)=>({inscripciones,loading})
 )
 
-export const selectElementByIdSuccess=createSelector(
+export const selectInscripcionByIdSuccess=createSelector(
   selectInscripcionesFeatureState,
   (state)=>state.inscripcionesDetailed
 )

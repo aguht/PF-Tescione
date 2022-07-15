@@ -25,12 +25,12 @@ export const deleteAlumnosFeatures=createAction(
   props<{id:string}>()
 );
 
-export const loadElementByIdFeatures=createAction(
+export const loadAlumnoByIdFeatures=createAction(
   '[AlumnosFeature] load element by id feature',
   props<{id:string}>()
 );
 
-export const loadElementByIdFeaturesSucces=createAction(
+export const loadAlumnoByIdFeaturesSucces=createAction(
   '[AlumnosFeature] load element by id success',
   props<{alumnosDetailed:Alumnos}>()
 );

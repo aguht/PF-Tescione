@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { selectElementByIdSuccess } from '../../store/alumnos-feature.selectors';
+import { selectAlumnoByIdSuccess } from '../../store/alumnos-feature.selectors';
 
 @Component({
   selector: 'app-alumnos-info',
@@ -18,7 +18,7 @@ export class AlumnosInfoComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.store.select(selectElementByIdSuccess).subscribe(
+    this.store.select(selectAlumnoByIdSuccess).subscribe(
       val=>{this.alumno=val}
     )
   }

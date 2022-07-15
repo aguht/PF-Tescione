@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { updateUsuariosFeatures } from '../../store/usuarios-feature.actions';
-import { selectElementByIdSuccess } from '../../store/usuarios-feature.selectors';
+import { selectUsuarioByIdSuccess } from '../../store/usuarios-feature.selectors';
 
 @Component({
   selector: 'app-usuarios-edit',
@@ -27,7 +27,7 @@ export class UsuariosEditComponent implements OnInit {
       }
     )
 
-    this.store.select(selectElementByIdSuccess).subscribe(
+    this.store.select(selectUsuarioByIdSuccess).subscribe(
       val=>{
         this.usuarioToEdit=val
         this.usuarioForm.get('user')?.patchValue(this.usuarioToEdit.user);

@@ -27,7 +27,7 @@ export const reducer = createReducer(
   }),
   on(UsuariosFeatureActions.loadUsuariosFeaturesFailure, (state, action) => state),
 
-  on(UsuariosFeatureActions.loadElementByIdFeaturesSucces, (state,{usuariosDetailed})=>{
+  on(UsuariosFeatureActions.loadUsuarioByIdFeaturesSucces, (state,{usuariosDetailed})=>{
     return {...state,usuariosDetailed}
   }),
 

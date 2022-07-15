@@ -25,13 +25,13 @@ export const deleteInscripcionesFeatures=createAction(
   props<{id:string}>()
 );
 
-export const loadElementByIdFeatures=createAction(
-  '[InscripcionesFeature] load element by id feature',
+export const loadInscripcionByIdFeatures=createAction(
+  '[InscripcionesFeature] load Inscripcion by id feature',
   props<{id:string}>()
 );
 
-export const loadElementByIdFeaturesSucces=createAction(
-  '[InscripcionesFeature] load element by id success',
+export const loadInscripcionByIdFeaturesSucces=createAction(
+  '[InscripcionesFeature] load Inscripcion by id success',
   props<{inscripcionesDetailed:Inscripciones}>()
 );
 

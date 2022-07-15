@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { updateCursosFeatures } from '../../store/cursos-feature.actions';
-import { selectElementByIdSuccess } from '../../store/cursos-feature.selectors';
+import { selectCursoByIdSuccess } from '../../store/cursos-feature.selectors';
 
 @Component({
   selector: 'app-cursos-edit',
@@ -27,7 +27,7 @@ export class CursosEditComponent implements OnInit {
       }
     )
 
-    this.store.select(selectElementByIdSuccess).subscribe(
+    this.store.select(selectCursoByIdSuccess).subscribe(
       val=>{
         this.cursoToEdit=val
         this.cursoForm.get('nombre')?.patchValue(this.cursoToEdit.nombre);

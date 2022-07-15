@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { selectElementByIdSuccess } from '../../store/inscripciones-feature.selectors';
+import { selectInscripcionByIdSuccess } from '../../store/inscripciones-feature.selectors';
 
 @Component({
   selector: 'app-inscripciones-info',
@@ -17,7 +17,7 @@ export class InscripcionesInfoComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.store.select(selectElementByIdSuccess).subscribe(
+    this.store.select(selectInscripcionByIdSuccess).subscribe(
       val=>{this.inscripcion=val}
     )
   }

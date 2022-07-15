@@ -21,7 +21,7 @@ export const selectCursosSuccess=createSelector(
   (cursos,loading)=>({cursos,loading})
 )
 
-export const selectElementByIdSuccess=createSelector(
+export const selectCursoByIdSuccess=createSelector(
   selectCursosFeatureState,
   (state)=>state.cursosDetailed
 )

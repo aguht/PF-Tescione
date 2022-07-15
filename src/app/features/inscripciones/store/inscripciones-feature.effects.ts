@@ -44,10 +44,10 @@ export class InscripcionesFeatureEffects {
 
   loadInscripcionesDetailedFeatures$=createEffect(()=>{
     return this.actions$.pipe(
-      ofType(InscripcionesFeatureActions.loadElementByIdFeatures),
+      ofType(InscripcionesFeatureActions.loadInscripcionByIdFeatures),
       mergeMap((inscripciones)=>this.inscripcionesService.getInscripcionesDetail(inscripciones.id)
       .pipe(
-        map((inscripcionesDetailed)=>InscripcionesFeatureActions.loadElementByIdFeaturesSucces({inscripcionesDetailed})),
+        map((inscripcionesDetailed)=>InscripcionesFeatureActions.loadInscripcionByIdFeaturesSucces({inscripcionesDetailed})),
         catchError(()=>EMPTY)
      ))
     );

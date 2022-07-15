@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { deleteInscripcionesFeatures, loadInscripcionesFeatures, loadElementByIdFeatures } from '../../store/inscripciones-feature.actions';
+import { selectAlumnoByIdSuccess } from 'src/app/features/alumnos/store/alumnos-feature.selectors';
+import { selectCursoByIdSuccess } from 'src/app/features/cursos/store/cursos-feature.selectors';
+import { Inscripciones } from 'src/app/shared/interfaces/inscripciones';
+import { deleteInscripcionesFeatures, loadInscripcionesFeatures, loadInscripcionByIdFeatures } from '../../store/inscripciones-feature.actions';
 import { selectInscripcionesSuccess } from '../../store/inscripciones-feature.selectors';
 
 @Component({
@@ -27,6 +30,8 @@ export class InscripcionesListaComponent implements OnInit {
         }
       }
     )
+    
+    
   }
 
   deleteElement(el:any){
@@ -34,7 +39,7 @@ export class InscripcionesListaComponent implements OnInit {
   }
 
   getInscripcionDetails(el:any){
-    this.store.dispatch(loadElementByIdFeatures({id:el.id}))
+    this.store.dispatch(loadInscripcionByIdFeatures({id:el.id}))
   }
 
   ngOnDestroy(): void {

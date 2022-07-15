@@ -25,13 +25,13 @@ export const deleteUsuariosFeatures=createAction(
   props<{id:string}>()
 );
 
-export const loadElementByIdFeatures=createAction(
-  '[UsuariosFeature] load element by id feature',
+export const loadUsuarioByIdFeatures=createAction(
+  '[UsuariosFeature] load Usuario by id feature',
   props<{id:string}>()
 );
 
-export const loadElementByIdFeaturesSucces=createAction(
-  '[UsuariosFeature] load element by id success',
+export const loadUsuarioByIdFeaturesSucces=createAction(
+  '[UsuariosFeature] load Usuario by id success',
   props<{usuariosDetailed:Usuarios}>()
 );
 

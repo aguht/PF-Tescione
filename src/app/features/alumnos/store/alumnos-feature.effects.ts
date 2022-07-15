@@ -44,10 +44,10 @@ export class AlumnosFeatureEffects {
 
   loadAlumnosDetailedFeatures$=createEffect(()=>{
     return this.actions$.pipe(
-      ofType(AlumnosFeatureActions.loadElementByIdFeatures),
+      ofType(AlumnosFeatureActions.loadAlumnoByIdFeatures),
       mergeMap((alumnos)=>this.alumnosService.getAlumnosDetail(alumnos.id)
       .pipe(
-        map((alumnosDetailed)=>AlumnosFeatureActions.loadElementByIdFeaturesSucces({alumnosDetailed})),
+        map((alumnosDetailed)=>AlumnosFeatureActions.loadAlumnoByIdFeaturesSucces({alumnosDetailed})),
         catchError(()=>EMPTY)
      ))
     );

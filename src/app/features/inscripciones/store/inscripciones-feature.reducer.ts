@@ -27,7 +27,7 @@ export const reducer = createReducer(
   }),
   on(InscripcionesFeatureActions.loadInscripcionesFeaturesFailure, (state, action) => state),
 
-  on(InscripcionesFeatureActions.loadElementByIdFeaturesSucces, (state,{inscripcionesDetailed})=>{
+  on(InscripcionesFeatureActions.loadInscripcionByIdFeaturesSucces, (state,{inscripcionesDetailed})=>{
     return {...state,inscripcionesDetailed}
   }),
 

@@ -1,19 +1,18 @@
-<button mat-raised-button color="primary" routerLink="/inscripciones/form">+ Añadir nuevo usuario  </button>
 <table #table mat-table [dataSource]="inscripcioness" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="curso">
+    <ng-container matColumnDef="nombreCurso">
       <th mat-header-cell *matHeaderCellDef> Curso </th>
       <td mat-cell *matCellDef="let element">
-      {{element.curso}} </td> 
+      {{element.nombreCurso}} </td> 
     </ng-container>
 
-    <ng-container matColumnDef="alumno">
+    <ng-container matColumnDef="nombreAlumno">
       <th mat-header-cell *matHeaderCellDef appTitulos> Alumno </th>
       <td mat-cell *matCellDef="let element">
-      {{element.nombre}} </td>
+      {{element.nombreAlumno}} </td>
     </ng-container>
     
-    <ng-container matColumnDef="usuario">
+    <ng-container matColumnDef="user">
       <th mat-header-cell *matHeaderCellDef> Alta por </th>
       <td mat-cell *matCellDef="let element">
       {{element.user}} </td>

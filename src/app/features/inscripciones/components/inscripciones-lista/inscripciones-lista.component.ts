@@ -5,7 +5,7 @@ import { selectAlumnoByIdSuccess } from 'src/app/features/alumnos/store/alumnos-
 import { selectCursoByIdSuccess } from 'src/app/features/cursos/store/cursos-feature.selectors';
 import { Inscripciones } from 'src/app/shared/interfaces/inscripciones';
 import { deleteInscripcionesFeatures, loadInscripcionesFeatures, loadInscripcionByIdFeatures } from '../../store/inscripciones-feature.actions';
-import { selectInscripcionesSuccess } from '../../store/inscripciones-feature.selectors';
+import { selectInscripcionByIdSuccess, selectInscripcionesSuccess } from '../../store/inscripciones-feature.selectors';
 
 @Component({
   selector: 'app-inscripciones-lista',
@@ -15,7 +15,7 @@ import { selectInscripcionesSuccess } from '../../store/inscripciones-feature.se
 export class InscripcionesListaComponent implements OnInit {
 
   nombreApellido:string;
-  displayedColumns=['curso','alumno','usuario','fecha','edit','delete'];
+  displayedColumns=['nombreCurso','nombreAlumno','user','fecha','edit','delete'];
   inscripcioness:any=[];
   subscriptions:Subscription;
 
@@ -24,7 +24,7 @@ export class InscripcionesListaComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(loadInscripcionesFeatures());
     this.store.select(selectInscripcionesSuccess).subscribe(
-      (val)=>{
+      (val)=>{//debugger
         if(val.inscripciones.length>0){
           this.inscripcioness=val.inscripciones;
         }

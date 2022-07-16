@@ -14,7 +14,7 @@ export class InscripcionesService {
     return this.http.get<Inscripciones[]>(this.url);
   }
 
-  postInscripciones(inscripciones:any):Observable<Inscripciones>{
+  postInscripciones(inscripciones:Inscripciones):Observable<Inscripciones>{
     return this.http.post<Inscripciones>(this.url,inscripciones)
   }
 

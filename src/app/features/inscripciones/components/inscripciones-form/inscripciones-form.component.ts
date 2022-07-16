@@ -18,10 +18,10 @@ export class InscripcionesFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.inscripcionForm=this.fb.group({
+      nombreAlumno:[''],
+      nombreCurso:[''],
       user:[''],
-      pass:[''],
-      nombre:[''],
-      email:['']     
+      fecha:['']     
       }
     )
   }

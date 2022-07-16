@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { updateAlumnosFeatures } from 'src/app/features/alumnos/store/alumnos-feature.actions';
 import { selectAlumnoByIdSuccess } from 'src/app/features/alumnos/store/alumnos-feature.selectors';
-import { loadInscripcionByIdFeatures } from 'src/app/features/inscripciones/store/inscripciones-feature.actions';
-import { Inscripciones } from 'src/app/shared/interfaces/inscripciones';
+import { loadInscripcionByIdFeatures, postInscripcionesFeatures } from 'src/app/features/inscripciones/store/inscripciones-feature.actions';
+import { Alumnos } from 'src/app/shared/interfaces/alumnos';
 import { deleteCursosFeatures, loadCursoByIdFeatures, loadCursosFeatures } from '../../store/cursos-feature.actions';
-import { selectCursosSuccess } from '../../store/cursos-feature.selectors';
+import { selectCursoByIdSuccess, selectCursosSuccess } from '../../store/cursos-feature.selectors';
 
 @Component({
   selector: 'app-cursos-lista',
@@ -14,15 +16,13 @@ import { selectCursosSuccess } from '../../store/cursos-feature.selectors';
 })
 export class CursosListaComponent implements OnInit {
 
-  nombreApellido:string;
   displayedColumns=['nombre','profesor','horas','inscripcion','edit','info','delete'];
   cursoss:any=[];
   subscriptions:Subscription;
-  curso:any=[];
-  alumno:any=[];
-  inscripcion:Inscripciones;
+  alumnos:any=[];
+  inscripcion:any={};
 
-  constructor( private store:Store<any>) { }
+  constructor(private store:Store<any>, private router:Router) { }
 
   ngOnInit(): void {
     this.store.dispatch(loadCursosFeatures());
@@ -44,15 +44,21 @@ export class CursosListaComponent implements OnInit {
   }
 
   crearInscripcion(el:any){
-    this.store.select(selectAlumnoByIdSuccess).subscribe(
-      val=>{this.alumno=val}
-    )
-    this.alumno.curso=this.curso.nombre;
-    this.inscripcion.nombreAlumno=this.alumno.nombre;
+    //debugger;
+    // this.store.select(selectAlumnoByIdSuccess).subscribe(
+    //   val=>{debugger
+    //     this.alumno=val}
+    // )
+    this.alumnos.curso=el.nombre;
+    debugger
+    //this.alumno.curso=el.nombre;
+    this.inscripcion.nombreAlumno=this.alumnos.nombre;
     this.inscripcion.nombreCurso=el.nombre;
     this.inscripcion.fecha=Date.now();
-
-    this.store.dispatch(loadInscripcionByIdFeatures(this.inscripcion))
+    //debugger;
+    this.store.dispatch(postInscripcionesFeatures({inscripciones:this.inscripcion}));
+    this.store.dispatch(updateAlumnosFeatures(this.alumnos));
+    this.router.navigate(['/inscripciones']);
   }
 
   ngOnDestroy(): void {

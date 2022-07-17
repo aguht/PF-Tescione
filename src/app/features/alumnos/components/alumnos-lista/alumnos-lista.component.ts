@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { deleteAlumnosFeatures, loadAlumnoByIdFeatures, loadAlumnosFeatures } from '../../store/alumnos-feature.actions';
 import { selectAlumnosSuccess } from '../../store/alumnos-feature.selectors';
 
@@ -16,7 +17,7 @@ export class AlumnosListaComponent implements OnInit {
   alumnoss:any=[];
   subscriptions:Subscription;
 
-  constructor( private store:Store<any>) { }
+  constructor( private store:Store<any>, public authService:AuthService) { }
 
   ngOnInit(): void {
     this.store.dispatch(loadAlumnosFeatures());
@@ -35,6 +36,11 @@ export class AlumnosListaComponent implements OnInit {
 
   getAlumnoDetails(el:any){
     this.store.dispatch(loadAlumnoByIdFeatures({id:el.id}))
+  }
+
+  getAlumnoDetails2(el:any){
+    this.store.dispatch(loadAlumnoByIdFeatures({id:el.id}));
+    
   }
 
   ngOnDestroy(): void {

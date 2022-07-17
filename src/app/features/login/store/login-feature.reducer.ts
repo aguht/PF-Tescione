@@ -1,21 +1,34 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import * as LoginFeatureActions from './login-feature.actions';
+import { Usuarios } from 'src/app/shared/interfaces/usuarios';
+import * as AuthActions from './login-feature.actions';
 
-export const loginFeatureFeatureKey = 'loginFeature';
+export const authFeatureKey = 'auth';
 
-export interface State {
-
+export interface AuthState {
+  usuarioActivo: Usuarios;
 }
 
-export const initialState: State = {
-
+export const initialState: AuthState = {
+  usuarioActivo: {
+    id: '',
+    user: '',
+    pass: '',
+    rol: 0,
+  },
 };
 
-export const reducer = createReducer(
+export const authReducer = createReducer(
   initialState,
 
-  on(LoginFeatureActions.loadLoginFeatures, state => state),
-  on(LoginFeatureActions.loadLoginFeaturesSuccess, (state, action) => state),
-  on(LoginFeatureActions.loadLoginFeaturesFailure, (state, action) => state),
+  on(AuthActions.cargarSesion, (state, { data }) => {
+    return { ...state, usuarioActivo: data };
+  }),
 
+  on(AuthActions.loginAction, (state, { user, pass }) => {
+    return { ...state, user };
+  }),
+
+  on(AuthActions.cerrarSesion, () => {
+    return initialState;
+  })
 );

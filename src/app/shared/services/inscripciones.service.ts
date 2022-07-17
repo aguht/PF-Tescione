@@ -15,11 +15,11 @@ export class InscripcionesService {
   }
 
   postInscripciones(inscripciones:Inscripciones):Observable<Inscripciones>{
-    return this.http.post<Inscripciones>(this.url,inscripciones)
+    return this.http.post<Inscripciones>(this.url,inscripciones);
   }
 
   updateInscripciones(inscripciones:Inscripciones):Observable<Inscripciones>{
-    return this.http.put<Inscripciones>(this.url+`/${inscripciones.id}`,inscripciones)
+    return this.http.put<Inscripciones>(this.url+`/${inscripciones.id}`,inscripciones);
   }
 
   deleteInscripciones(id:string):Observable<Inscripciones>{

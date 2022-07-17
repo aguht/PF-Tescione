@@ -8,14 +8,16 @@ import { CursosModule } from './features/cursos/cursos.module';
 import { InscripcionesModule } from './features/inscripciones/inscripciones.module';
 import { LoginModule } from './features/login/login.module';
 import { UsuariosModule } from './features/usuarios/usuarios.module';
+import { AdminGuard } from './shared/guards/admin.guard';
+import { LoginGuard } from './shared/guards/login.guard';
 
 const routes: Routes = [
-  {path:'alumnos', loadChildren:()=>import('./features/alumnos/alumnos.module').then(m=>AlumnosModule)},
-  {path:'cursos', loadChildren:()=>import('./features/cursos/cursos.module').then(m=>CursosModule)},
-  {path:'inscripciones', loadChildren:()=>import('./features/inscripciones/inscripciones.module').then(m=>InscripcionesModule)},
-  {path:'login', loadChildren:()=>import('./features/login/login.module').then(m=>LoginModule)},
-  {path:'usuarios', loadChildren:()=>import('./features/usuarios/usuarios.module').then(m=>UsuariosModule)},
-  {path:'', component: FrontComponent, pathMatch:'full'},
+  {path:'alumnos', loadChildren:()=>import('./features/alumnos/alumnos.module').then(m=>AlumnosModule), canActivate:[LoginGuard]},
+  {path:'cursos', loadChildren:()=>import('./features/cursos/cursos.module').then(m=>CursosModule), canActivate:[LoginGuard]},
+  {path:'inscripciones', loadChildren:()=>import('./features/inscripciones/inscripciones.module').then(m=>InscripcionesModule), canActivate:[LoginGuard]},
+  {path:'login', loadChildren:()=>import('./features/login/login.module').then(m=>LoginModule), pathMatch: 'full'},
+  {path:'usuarios', loadChildren:()=>import('./features/usuarios/usuarios.module').then(m=>UsuariosModule), canActivate:[LoginGuard, AdminGuard]},
+  {path:'', component: FrontComponent, pathMatch:'full', canActivate:[LoginGuard]},
   {path:'**', component: NoPageFoundComponent}
 ];
 

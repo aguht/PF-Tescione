@@ -1,15 +1,14 @@
 import { createAction, props } from '@ngrx/store';
+import { Usuarios } from 'src/app/shared/interfaces/usuarios';
 
-export const loadLoginFeatures = createAction(
-  '[LoginFeature] Load LoginFeatures'
+export const loginAction = createAction(
+  '[Auth] Iniciar Sesion',
+  props<{ user: any; pass: any }>()
 );
 
-export const loadLoginFeaturesSuccess = createAction(
-  '[LoginFeature] Load LoginFeatures Success',
-  props<{ data: any }>()
+export const cargarSesion = createAction(
+  '[Auth] Cargar Sesion',
+  props<{ data: Usuarios }>()
 );
 
-export const loadLoginFeaturesFailure = createAction(
-  '[LoginFeature] Load LoginFeatures Failure',
-  props<{ error: any }>()
-);
+export const cerrarSesion = createAction('[Auth] Cerrar Sesion');

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UnionPipe } from './Pipes/union.pipe';
+import { UnionPipe } from './pipes/union.pipe';
 import { MaterialModule } from './material.module';
 
 
@@ -14,7 +14,7 @@ import { MaterialModule } from './material.module';
   ],
   exports:[
     UnionPipe,
-    MaterialModule
+    MaterialModule,
   ]
 })
 export class SharedModule { }

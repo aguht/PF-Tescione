@@ -7,6 +7,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 
@@ -20,7 +21,8 @@ import { MatCardModule } from '@angular/material/card';
     MatSelectModule,
     MatIconModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule
   ]
 })
 export class MaterialModule { }

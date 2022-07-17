@@ -20,8 +20,7 @@
     </ng-container>
      
     <ng-container matColumnDef="inscripcion">
-      <th mat-header-cell *matHeaderCellDef> 
-      </th>
+      <th mat-header-cell *matHeaderCellDef> Inscribir </th>
       <td mat-cell *matCellDef="let element">
         <div (click)="crearInscripcion(element)">
           <span class="material-icons">
@@ -36,7 +35,7 @@
       </th>
       <td mat-cell *matCellDef="let element">
         <div (click)="getCursoDetails(element)" routerLink="/cursos/edit">
-          <span class="material-icons">
+          <span class="material-icons" *ngIf="authService.isAdmin">
               edit
           </span>
       </div>
@@ -60,7 +59,7 @@
         </th>
         <td mat-cell *matCellDef="let element" >
           <div (click)="deleteElement(element)">
-            <span class="material-icons">
+            <span class="material-icons" *ngIf="authService.isAdmin">
                 delete
             </span>
         </div>

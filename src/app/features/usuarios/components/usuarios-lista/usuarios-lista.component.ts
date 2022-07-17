@@ -12,7 +12,7 @@ import { selectUsuariosSuccess } from '../../store/usuarios-feature.selectors';
 export class UsuariosListaComponent implements OnInit {
 
   nombreApellido:string;
-  displayedColumns=['usuario','nombre','email','edit','info','delete'];
+  displayedColumns=['usuario','nombre','rol','edit','info','delete'];
   usuarioss:any=[];
   subscriptions:Subscription;
 

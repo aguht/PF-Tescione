@@ -1,6 +1,13 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromLoginFeature from './login-feature.reducer';
+import * as fromAuth from './login-feature.reducer';
 
-export const selectLoginFeatureState = createFeatureSelector<fromLoginFeature.State>(
-  fromLoginFeature.loginFeatureFeatureKey
+export const selectAuthState = createFeatureSelector<fromAuth.AuthState>(
+  fromAuth.authFeatureKey
+);
+
+export const selectorUsuarioActivo = createSelector(
+  selectAuthState,
+  (state: fromAuth.AuthState) => {
+    return state;
+  }
 );

@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     CoreModule,
     SharedModule,
-    //FeaturesModule,
+    FeaturesModule,
     MaterialModule,
     NoopAnimationsModule,
     StoreModule.forRoot({}, {}),

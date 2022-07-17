@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { selectAlumnoByIdSuccess } from 'src/app/features/alumnos/store/alumnos-feature.selectors';
-import { selectCursoByIdSuccess } from 'src/app/features/cursos/store/cursos-feature.selectors';
-import { Inscripciones } from 'src/app/shared/interfaces/inscripciones';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { deleteInscripcionesFeatures, loadInscripcionesFeatures, loadInscripcionByIdFeatures } from '../../store/inscripciones-feature.actions';
-import { selectInscripcionByIdSuccess, selectInscripcionesSuccess } from '../../store/inscripciones-feature.selectors';
+import { selectInscripcionesSuccess } from '../../store/inscripciones-feature.selectors';
 
 @Component({
   selector: 'app-inscripciones-lista',
@@ -15,23 +13,21 @@ import { selectInscripcionByIdSuccess, selectInscripcionesSuccess } from '../../
 export class InscripcionesListaComponent implements OnInit {
 
   nombreApellido:string;
-  displayedColumns=['nombreCurso','nombreAlumno','user','fecha','edit','delete'];
+  displayedColumns=['nombreCurso','nombreAlumno','user','fecha','delete'];
   inscripcioness:any=[];
   subscriptions:Subscription;
 
-  constructor( private store:Store<any>) { }
+  constructor( private store:Store<any>, public authService:AuthService) { }
 
   ngOnInit(): void {
     this.store.dispatch(loadInscripcionesFeatures());
     this.store.select(selectInscripcionesSuccess).subscribe(
-      (val)=>{//debugger
+      (val)=>{
         if(val.inscripciones.length>0){
           this.inscripcioness=val.inscripciones;
         }
       }
     )
-    
-    
   }
 
   deleteElement(el:any){

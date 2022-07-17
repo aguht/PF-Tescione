@@ -23,7 +23,8 @@ export class UsuariosEditComponent implements OnInit {
       pass:[''],
       nombre:[''],
       email:[''],
-      id:[''] 
+      id:[''],
+      rol:['']
       }
     )
 
@@ -34,7 +35,8 @@ export class UsuariosEditComponent implements OnInit {
         this.usuarioForm.get('pass')?.patchValue(this.usuarioToEdit.pass);
         this.usuarioForm.get('nombre')?.patchValue(this.usuarioToEdit.nombre);
         this.usuarioForm.get('email')?.patchValue(this.usuarioToEdit.email);
-        this.usuarioForm.get('id')?.patchValue(this.usuarioToEdit.id)
+        this.usuarioForm.get('id')?.patchValue(this.usuarioToEdit.id);
+        this.usuarioForm.get('rol')?.patchValue(this.usuarioToEdit.rol)
         }
       )
   }

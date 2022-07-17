@@ -21,7 +21,8 @@ export class UsuariosFormComponent implements OnInit {
       user:[''],
       pass:[''],
       nombre:[''],
-      email:['']     
+      email:[''],
+      rol:['']    
       }
     )
   }

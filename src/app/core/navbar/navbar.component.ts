@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { cerrarSesion } from 'src/app/features/login/store/login-feature.actions';
 import { selectorUsuarioActivo } from 'src/app/features/login/store/login-feature.selectors';
 import { Usuarios } from 'src/app/shared/interfaces/usuarios';
+import { AlumnosService } from 'src/app/shared/services/alumnos.service';
 
 
 @Component({
@@ -15,14 +16,15 @@ import { Usuarios } from 'src/app/shared/interfaces/usuarios';
 export class NavbarComponent implements OnInit {
 
   usuarioActivo: Usuarios;
+  vista:any;
 
-  constructor(public authService:AuthService, private store:Store, private router:Router) { }
+  constructor(public authService:AuthService, private store:Store, private router:Router, private alumnosService:AlumnosService) { }
 
   ngOnInit(): void {
-    var values = JSON.parse(localStorage.getItem('session') || 'false');
+    let aux = JSON.parse(localStorage.getItem('sesion') || 'false');
     this.store.select(selectorUsuarioActivo).subscribe((data) => {
-      if (values.usuario !== undefined) {
-        this.usuarioActivo = values.usuario;
+      if (aux.usuario !== undefined) {
+        this.usuarioActivo = aux.usuario;
       } else {
         this.usuarioActivo = data.usuarioActivo;
       }
@@ -30,7 +32,7 @@ export class NavbarComponent implements OnInit {
   }
 
   cerrarSesion() {
-    this.authService.CerrarSesion();
+    this.authService.logOut();
     this.store.dispatch(cerrarSesion());
     this.router.navigate(['login']);
   }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
-import { exhaustMap, map, switchMap } from 'rxjs/operators';
+import { Actions, ofType } from '@ngrx/effects';
+import { switchMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { loginAction } from './login-feature.actions';
 

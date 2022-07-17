@@ -20,18 +20,12 @@ export class LoginGuard implements CanActivate {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let sesion = JSON.parse(localStorage.getItem('session') || '{}');
 
-    if (sesion.activa) {
-      
+    if (sesion.activa) {      
       return true;
-    } else {
+      } else {
       this.router.navigate(['/login']);
       return false;
     }

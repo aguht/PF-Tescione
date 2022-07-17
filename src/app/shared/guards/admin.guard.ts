@@ -17,16 +17,11 @@ export class AdminGuard implements CanActivate {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.authService.rol === 1 || this.authService.rol === true) {
       return true;
     } else {
-      this.authService.CerrarSesion();
+      this.authService.logOut();
       return false;
     }
   }

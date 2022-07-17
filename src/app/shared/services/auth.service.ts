@@ -2,14 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { Usuarios } from '../interfaces/usuarios';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  sesion: any = {
+    sesion: any = {
     activa: false,
     usuario: {},
   };
@@ -18,7 +17,7 @@ export class AuthService {
   rol: any;
 
   isAuthenticatedSrc: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    JSON.parse(localStorage.getItem('session') || 'false')
+    JSON.parse(localStorage.getItem('sesion') || 'false')
   );
 
   get isAuthenticated(): Observable<boolean> {
@@ -29,33 +28,32 @@ export class AuthService {
     return this.rol;
   }
 
-  constructor(private http: HttpClient, private ruta: Router) {
-    var values = JSON.parse(localStorage.getItem('session') || 'false');
-    if (values.user !== undefined) {
-      if (values.user.rol === 1) {
+  constructor(private http: HttpClient, private router: Router) {
+
+    let val = JSON.parse(localStorage.getItem('sesion') || 'false');
+    if (val.user !== undefined) {
+      if (val.user.rol === 1) {
         this.rol = true;
+        } else {
+          this.rol = false;
+          }
       } else {
         this.rol = false;
-      }
-    } else {
-      this.rol = false;
-    }
+        }
   }
+
   IniciarSesion(user: string, pass: string): Observable<Usuarios> {
-    return this.http
-      .get<Usuarios[]>(this.url)
+    return this.http.get<Usuarios[]>(this.url)
       .pipe(
         map((usuarios: Usuarios[]) => {
-          return usuarios.filter(
-            (u) => u.user === user && u.pass === pass
-          )[0];
+          return usuarios.filter((u) => u.user === user && u.pass === pass)[0];
         })
       )
       .pipe(
-        tap((res: any) => {
-          if (res) {
+        tap((xx:any) => {
+          if (xx) {
             this.isAuthenticatedSrc.next(true);
-            if (res.rol == 1) {
+            if (xx.rol == 1) {
               this.rol = true;
             } else {
               this.rol = false;
@@ -64,14 +62,16 @@ export class AuthService {
         })
       );
   }
-  CerrarSesion(): void {
+
+  
+  logOut(): void {
     this.sesion = {
       activa: false,
       usuario: {},
     };
-    localStorage.removeItem('session');
-    this.ruta.navigate(['login']);
+    localStorage.removeItem('sesion');
     this.isAuthenticatedSrc.next(false);
+    this.router.navigate(['login']);
   }
 
   establecerSesion(sesionActiva: boolean, user: Usuarios) {
@@ -80,6 +80,7 @@ export class AuthService {
       usuario: user,
     };
     localStorage.setItem('session', JSON.stringify(this.sesion));
-    this.ruta.navigate(['/alumnos']);
+    this.router.navigate(['/alumnos']);
   }
+
 }

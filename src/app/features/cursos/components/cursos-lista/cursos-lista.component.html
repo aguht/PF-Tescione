@@ -1,4 +1,4 @@
-<button mat-raised-button color="primary" routerLink="/cursos/form">+ Añadir nuevo Curso  </button>
+<button mat-raised-button color="primary" routerLink="/cursos/form" *ngIf="authService.isAdmin">+ Añadir nuevo Curso  </button>
 <table #table mat-table [dataSource]="cursoss" class="mat-elevation-z8">
 
     <ng-container matColumnDef="nombre">

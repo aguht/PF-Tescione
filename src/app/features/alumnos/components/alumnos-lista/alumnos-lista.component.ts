@@ -27,7 +27,7 @@ export class AlumnosListaComponent implements OnInit {
           this.alumnoss=val.alumnos;
         }
       }
-    )
+    )    
   }
 
   deleteElement(el:any){

@@ -13,34 +13,23 @@ import { cargarSesion, loginAction } from '../../store/login-feature.actions';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  formLogin!: FormGroup;
 
-  isLoginFailed = false;
-  roles: string[] = [];
-  errorMessage = '';
+  loginForm: FormGroup;
 
-  constructor(
-    public fb: FormBuilder,
-    private authService: AuthService,
-    private ruta: Router,
-    private store: Store
-  ) {
-    this.formLogin = fb.group({
-      usuario: new FormControl('', [Validators.required]),
-      contrasena: new FormControl('', [Validators.required]),
+  constructor(public fb: FormBuilder, private authService: AuthService, private ruta: Router, private store: Store) {
+      this.loginForm = fb.group({
+      user: new FormControl('', [Validators.required]),
+      pass: new FormControl('', [Validators.required]),
     });
   }
 
-  onEnviar(event: Event) {
+  submit(event: Event) {
     event.preventDefault();
-    const usuario = this.formLogin.value.usuario;
-    const contrasena = this.formLogin.value.contrasena;
-    this.authService
-      .IniciarSesion(usuario, contrasena)
-      .subscribe((data: Usuarios) => {
+    const user = this.loginForm.value.user;
+    const pass = this.loginForm.value.pass;
+    this.authService.IniciarSesion(user, pass).subscribe((data: Usuarios) => {
         if (data) {
           this.store.dispatch(cargarSesion({ data }));
-
           this.authService.establecerSesion(true, data);
         } else {
           Swal.fire({
@@ -51,7 +40,7 @@ export class LoginComponent {
         }
       });
     this.store.dispatch(
-      loginAction({ user: usuario, pass: contrasena })
+    loginAction({ user: user, pass: pass })
     );
   }
 }

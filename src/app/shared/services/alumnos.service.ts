@@ -28,5 +28,5 @@ export class AlumnosService {
 
   getAlumnosDetail(id:string):Observable<Alumnos>{
     return this.http.get<Alumnos>(this.url+`/${id}`);
-  }
+  } 
 }

@@ -4,17 +4,16 @@ import { UnionPipe } from './pipes/union.pipe';
 import { MaterialModule } from './material.module';
 
 
-
 @NgModule({
   declarations: [
-    UnionPipe
+    UnionPipe,
   ],
   imports: [
     CommonModule,
     MaterialModule
   ],
   exports:[
-   // UnionPipe,
+    UnionPipe,
     MaterialModule,
   ]
 })

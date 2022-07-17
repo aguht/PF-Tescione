@@ -10,10 +10,11 @@ import { MaterialModule } from './material.module';
     UnionPipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ],
   exports:[
-    UnionPipe,
+   // UnionPipe,
     MaterialModule,
   ]
 })
